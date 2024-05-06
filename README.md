@@ -1,1 +1,50 @@
-# natural
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>  <h1>To Join Us Make A Strong Password</h1></header>
+  
+    <div class="box">
+        <h2>Password Strength <span id="text">Check</span></h2>
+        <input type="password" id="password"
+         placeholder="Enter your password">
+        <div class="password-strength"></div>
+        <div class="password-strength"></div>
+        <div class="password-strength"></div>
+        </div>
+
+        <script>
+            let passwordInput = document.getElementById('password');
+            let passwordStrength = document.querySelectorAll('.password-strength');
+            let text = document.getElementById('text');
+
+            passwordInput.addEventListener('input',function(event)
+        {
+let password = event.target.value;
+let strength =Math.min(password.length,12);
+let degree =strength *30
+
+let gradientColor = strength <= 4 ? '#ff2c1c' :(strength <= 8 ?'#ff9800' : '#12ff12');
+
+let strengthText = strength <= 4 ? 'Weak' :(strength <= 8 ?'Medium' : 'strong');
+passwordStrength.forEach(passwordStrength =>{
+    passwordStrength.style.background =`conic-gradient(${gradientColor} ${degree}deg, #1115 ${degree}deg)`;
+});
+text.textContent = strengthText;
+text.style.color = gradientColor;
+        });
+        </script>
+   <div class="container">
+    <ul class="button-list">
+        <li><a href="http://127.0.0.1:5500/p.html"><span>JOIN NOW</span></a></li>
+  
+    </ul>
+</div>
+
+</body>
+</html>
